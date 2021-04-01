@@ -1,0 +1,54 @@
+{% include '/empleados/header.html' %}
+
+<br/>
+<br/>
+{% with messages = get_flashed_messages() %}
+
+{% if messages %}
+    <div class="alert alert-danger"> 
+        {% for message in messages %}
+            {{message}}
+        {%endfor%}
+    </div>
+{% endif %}
+{% endwith %}
+<br/>
+<form method="post" action="/store" enctype="multipart/form-data">
+    <input type="hidden" name="EmpleadoId" value="">
+
+    <div class="card">
+        <div class="card-header">
+            Employee Info
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Add employee info</h5>
+            <p class="card-text"> 
+
+                <div class="form-group">
+                    <label for="Nombre">Name:</label>
+                    <input id="Nombre" class="form-control" type="text" name="Nombres">
+                </div>                
+                <br>
+                <div class="form-group">
+                    <label for="Correo">Email:</label>
+                    <input id="Correo" class="form-control" type="text" name="Correo">
+                </div>
+                
+                <br>
+                <div class="form-group">
+                    <label for="Foto">Picture:</label>
+                    <input id="Foto" class="form-control" type="file" name="Foto">
+                </div>
+               
+                <br>
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Add">    
+                    <a class="btn btn-info" href="{{url_for('index')}}">Back to Home</a>
+                </div>
+                </p>
+        </div>
+    </div>
+   
+</form>
+
+{% include '/empleados/footer.html' %}

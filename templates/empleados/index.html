@@ -1,0 +1,36 @@
+{% include '/empleados/header.html' %}
+<br/>
+<br/>
+<br/>
+
+<a href="{{url_for('Add')}}" class="btn btn-success"> Add a new Employee</a>
+<br/>
+<br/>
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>FOTO</th>
+                <th>ID</th>
+                <th>NOMBRES</th>
+                <th>CORREO</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for empleado in empleados  %}
+            <tr>
+                <td>
+                    <img class="img-thumbnail" width="100" src="/uploads/{{empleado[3]}}" alt="UsuarioImage">                    
+                </td>
+                <td>{{empleado[0]}}</td>
+                <td>{{empleado[1]}}</td>
+                <td>{{empleado[2]}}</td>
+                <td>
+                    <a class="btn btn-warning" href="edit/{{empleado[0]}}">Editar</a> | 
+                    <a onclick="return confirm('Are you sure?')" class="btn btn-danger" href="delete/{{empleado[0]}}">Eliminar</a></td>
+            </tr>
+            {% endfor %}
+         
+        </tbody>
+    </table>
+{% include '/empleados/footer.html' %}
